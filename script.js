@@ -124,7 +124,7 @@ document.addEventListener('DOMContentLoaded', () => {
             const sectionHeight = current.offsetHeight;
             const sectionTop = current.offsetTop - 120;
             const sectionId = current.getAttribute('id');
-            const correspondingLink = document.querySelector(`.nav-links a[href*=${sectionId}]`);
+            const correspondingLink = document.querySelector(`.nav-links a[href*="${sectionId}"]`);
             
             if (correspondingLink) {
                 if (scrollY > sectionTop && scrollY <= sectionTop + sectionHeight) {
@@ -209,13 +209,14 @@ document.addEventListener('DOMContentLoaded', () => {
                     
                     if (dist < 100) {
                         const alpha = (1 - dist / 100) * 0.15;
+                        ctx.beginPath();
                         ctx.moveTo(p1.x, p1.y);
                         ctx.lineTo(p2.x, p2.y);
                         ctx.strokeStyle = `rgba(88, 166, 255, ${alpha})`;
+                        ctx.stroke();
                     }
                 }
             }
-            ctx.stroke();
             
             requestAnimationFrame(animate);
         }
